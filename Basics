@@ -1,0 +1,123 @@
+1) Hello, World!:
+
+#!/bin/bash
+# Text to the right of a '#' is treated as a comment - below is the shell command
+echo 'Hello, World!'
+
+----------------------------------------------------------------------------------
+
+
+
+2) Variables:
+
+#!/bin/bash
+# Change this code
+BIRTHDATE="Jan 1, 2000"
+Presents=10
+BIRTHDAY=$(date -d "$BIRTHDATE" +%A)
+
+
+
+# Testing code - do not change it
+
+if [ "$BIRTHDATE" == "Jan 1, 2000" ] ; then
+    echo "BIRTHDATE is correct, it is $BIRTHDATE"
+else
+    echo "BIRTHDATE is incorrect - please retry"
+fi
+if [ $Presents == 10 ] ; then
+    echo "I have received $Presents presents"
+else
+    echo "Presents is incorrect - please retry"
+fi
+if [ "$BIRTHDAY" == "Saturday" ] ; then
+    echo "I was born on a $BIRTHDAY"
+else
+    echo "BIRTHDAY is incorrect - please retry"
+fi
+
+----------------------------------------------------------------------------------
+
+
+
+3) Passing Arguments to the Script:
+
+#!/bin/bash
+function File {
+    # think you are inside the file
+    # Change here
+    echo $#
+}
+
+# Do not change anything
+if [ ! $# -lt 1 ]; then
+    File $*
+    exit 0
+fi
+
+# change here
+# here you can pass the arguments
+bash prog.sh Shell is fun
+
+----------------------------------------------------------------------------------
+
+
+
+4) Arrays:
+
+#!/bin/bash
+NAMES=( John Eric Jessica )
+# write your code here
+NUMBERS=(1 2 3)
+STRINGS=('hello' 'world')
+NumberOfNames=${#NAMES[@]}
+second_name=${NAMES[1]}
+
+echo ${NUMBERS[@]}
+echo ${STRINGS[@]}
+echo "The number of names listed in the NAMES array: $NumberOfNames"
+echo "The second name on the NAMES list is: $second_name"
+
+----------------------------------------------------------------------------------
+
+
+
+5) Basic Operators:
+
+#!/bin/bash 
+
+COST_PINEAPPLE=50
+
+COST_BANANA=4
+
+COST_WATERMELON=23
+
+COST_BASKET=1
+
+TOTAL=$(( $COST_BASKET + $COST_PINEAPPLE + (2 * $COST_BANANA) + (3 * $COST_WATERMELON)))
+
+echo "Total Cost is $TOTAL" 
+
+----------------------------------------------------------------------------------
+
+
+
+6) Basic String Operations:
+
+#!/bin/bash
+
+BUFFETT="Life is like a snowball. The important thing is finding wet snow and a really long hill."
+# write your code here
+ISAY=$BUFFETT
+CHANGE1=${ISAY[@]/snow/foot}
+CHANGE2=${CHANGE1[@]// snow/}
+CHANGE3=${CHANGE2[@]/finding/getting}
+WET=`expr index "$CHANGE3" "w"`+3
+ISAY=${CHANGE3::$WET}
+
+
+# Test code - do not modify
+echo "Warren Buffett said:"
+echo $BUFFETT
+echo "and I say:"
+echo $ISAY
